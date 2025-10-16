@@ -47,7 +47,9 @@ const GithubUser = () => {
 
   return (
     <div className="container">
-      <h1>🔍 GitHub User Search</h1>
+    <h1>
+      <span className="logo">🐙</span> GitHub Profile Finder
+    </h1>
       <form onSubmit={handleSubmit} className="search-form">
         <input
           type="text"
@@ -58,7 +60,11 @@ const GithubUser = () => {
         <button type="submit">Search</button>
       </form>
 
-      {loading && <p className="loading">Loading...</p>}
+      {loading && (
+        <div className="loading">
+        <span>⏳</span> Fetching user...
+        </div>
+      )}
       {error && <p className="error">{error}</p>}
 
       {data && (

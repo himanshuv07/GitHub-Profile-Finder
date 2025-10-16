@@ -1,144 +1,241 @@
-/* Global Styles */
+/* ----------------------------- */
+/* Global Styles + Background FX */
+/* ----------------------------- */
 body {
   font-family: "Poppins", sans-serif;
-  background: #121212;
-  color: white;
+  background: radial-gradient(circle at 20% 20%, #1a1a1a, #0d0d0d);
+  color: #fff;
   text-align: center;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  cursor: url('https://cur.cursors-4u.net/cursors/cur-3/cur259.cur'), auto;
 }
 
-/* Container */
-.container {
-  max-width: 500px;
-  margin: 50px auto;
-  background: #1e1e1e;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
-  transition: transform 0.3s ease-in-out;
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #0dcaf04b, #ff5e574b, #6f42c14b);
+  background-size: 400% 400%;
+  z-index: -1;
+  animation: gradientMove 10s ease infinite;
+  filter: blur(60px);
 }
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ----------------------------- */
+/* Container */
+/* ----------------------------- */
+.container {
+  max-width: 520px;
+  margin: 60px auto;
+  background: rgba(30, 30, 30, 0.9);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s ease;
+}
+
 .container:hover {
   transform: scale(1.02);
+  box-shadow: 0 0 40px rgba(13, 202, 240, 0.3);
 }
 
-/* Heading */
+/* ----------------------------- */
+/* Logo + Title */
+/* ----------------------------- */
 h1 {
-  font-size: 26px;
+  font-size: 28px;
   color: #0dcaf0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-shadow: 0 0 8px #0dcaf0;
+  animation: titlePop 1.5s ease-in-out infinite alternate;
 }
 
+@keyframes titlePop {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+/* ----------------------------- */
 /* Search Form */
+/* ----------------------------- */
 .search-form {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .search-form input {
   width: 70%;
-  padding: 10px;
+  padding: 12px;
   border: 2px solid #0dcaf0;
-  border-radius: 6px;
+  border-radius: 8px;
   background: #2a2a2a;
   color: white;
   outline: none;
   transition: 0.3s;
+  box-shadow: 0 0 10px rgba(13, 202, 240, 0.2);
 }
+
 .search-form input:focus {
   border-color: #ff5e57;
+  box-shadow: 0 0 15px rgba(255, 94, 87, 0.4);
 }
 
 .search-form button {
-  padding: 10px 15px;
-  margin-left: 5px;
+  padding: 12px 18px;
+  margin-left: 8px;
   border: none;
-  background: #0dcaf0;
+  background: linear-gradient(135deg, #0dcaf0, #ff5e57);
   color: white;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
-  transition: background 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .search-form button:hover {
-  background: #ff5e57;
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(255, 94, 87, 0.5);
 }
 
-/* Loading */
+/* ----------------------------- */
+/* Loading Animation */
+/* ----------------------------- */
 .loading {
-  color: #0dcaf0;
   font-size: 18px;
+  color: #0dcaf0;
+  margin-top: 20px;
+  animation: pulse 1.2s infinite;
 }
 
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* ----------------------------- */
 /* Error Message */
+/* ----------------------------- */
 .error {
   color: #ff5e57;
   font-size: 16px;
+  margin-top: 10px;
+  animation: shake 0.3s ease-in-out;
 }
 
+@keyframes shake {
+  0% { transform: translateX(-3px); }
+  25% { transform: translateX(3px); }
+  50% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+  100% { transform: translateX(0); }
+}
+
+/* ----------------------------- */
 /* Profile Card */
+/* ----------------------------- */
 .profile-card {
-  background: #2a2a2a;
-  padding: 20px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0px 2px 12px rgba(255, 255, 255, 0.2);
-  animation: fadeIn 0.5s ease-in-out;
+  background: rgba(42, 42, 42, 0.95);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+  animation: fadeIn 0.6s ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(13, 202, 240, 0.3);
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: scale(0.9);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0);
   }
 }
 
+/* ----------------------------- */
 /* Avatar */
+/* ----------------------------- */
 .avatar {
-  width: 120px;
-  height: 120px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   border: 3px solid #0dcaf0;
+  margin-bottom: 10px;
+  transition: all 0.4s ease;
 }
 
+.avatar:hover {
+  transform: rotate(5deg) scale(1.05);
+  box-shadow: 0 0 20px rgba(13, 202, 240, 0.4);
+}
+
+/* ----------------------------- */
 /* Profile Details */
+/* ----------------------------- */
 .profile-card h2 {
-  margin: 10px 0 5px;
   color: #0dcaf0;
+  margin: 10px 0 5px;
+  font-size: 22px;
 }
 
 .profile-card p {
-  margin: 5px 0;
+  margin: 6px 0;
   font-size: 14px;
   color: #bbb;
 }
 
+/* ----------------------------- */
 /* Profile Link */
+/* ----------------------------- */
 .profile-card a {
   display: inline-block;
-  margin-top: 12px;
+  margin-top: 15px;
   text-decoration: none;
   color: white;
-  background: #ff5e57;
-  padding: 10px 15px;
-  border-radius: 6px;
+  background: linear-gradient(135deg, #ff5e57, #0dcaf0);
+  padding: 12px 18px;
+  border-radius: 8px;
   font-weight: bold;
-  transition: background 0.3s;
-}
-.profile-card a:hover {
-  background: #0dcaf0;
+  transition: all 0.3s ease-in-out;
 }
 
+.profile-card a:hover {
+  background: linear-gradient(135deg, #0dcaf0, #ff5e57);
+  box-shadow: 0 0 15px rgba(13, 202, 240, 0.4);
+  transform: scale(1.05);
+}
+
+/* ----------------------------- */
 /* Responsive Design */
+/* ----------------------------- */
 @media (max-width: 600px) {
   .container {
     max-width: 90%;
   }
   .search-form input {
     width: 65%;
+  }
+  h1 {
+    font-size: 22px;
   }
 }
